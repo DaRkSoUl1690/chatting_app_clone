@@ -1,4 +1,6 @@
 import 'package:chatting_app_clone/screens/auth_screen.dart';
+import 'package:chatting_app_clone/screens/chat_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +39,16 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const AuthScreen(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (BuildContext context,
+         AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.hasData) {
+            return const ChatScreen();
+          }
+          return const AuthScreen();
+        },
+      ),
     );
   }
 }
