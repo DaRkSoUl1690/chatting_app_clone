@@ -80,9 +80,6 @@ class _AuthScreenState extends State<AuthScreen> {
       });
     } catch (err) {
       f(err);
-      setState(() {
-        _isLoading = false;
-      });
     }
   }
 

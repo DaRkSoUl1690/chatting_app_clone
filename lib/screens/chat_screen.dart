@@ -1,6 +1,6 @@
 import 'package:chatting_app_clone/widgets/chats/messages.dart';
+import 'package:chatting_app_clone/widgets/chats/newmessages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -11,8 +11,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-
- void initState() {
+  void initState() {
     super.initState();
     // final fbm = FirebaseMessaging();
     // fbm.requestNotificationPermissions();
@@ -47,14 +46,14 @@ class _ChatScreenState extends State<ChatScreen> {
             items: [
               DropdownMenuItem(
                 value: 'logout',
-                child:  Row(
-                    children:  <Widget>[
-                       Icon(Icons.exit_to_app,
+                child: Row(
+                  children: <Widget>[
+                    Icon(Icons.exit_to_app,
                         color: Theme.of(context).primaryColor),
-                       const SizedBox(width: 5),
-                       const Text('Logout'),
-                    ],
-                  ),
+                    const SizedBox(width: 5),
+                    const Text('Logout'),
+                  ],
+                ),
               ),
             ],
             onChanged: (itemIdentifier) {
@@ -65,15 +64,13 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       ),
-      body: Container(
-        child: Column(
-          children: const <Widget>[
-            Expanded(
-              child: Messages(),
-            ),
-            // NewMessage(),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          const Expanded(
+            child: Messages(),
+          ),
+          NewMessage(),
+        ],
       ),
     );
   }

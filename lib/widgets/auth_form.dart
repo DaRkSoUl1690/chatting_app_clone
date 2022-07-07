@@ -77,6 +77,7 @@ class _AuthFormState extends State<AuthForm> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   if (!_isLogin) UserImagePicker(_pickedImage),
+                  
                   TextFormField(
                     key: const ValueKey('email'),
                     autocorrect: false,
